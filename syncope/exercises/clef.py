@@ -1,10 +1,8 @@
-from random import randint
+
 from textwrap import dedent
 
-from syncope.constants import CLEFS
-from syncope.lilypond import run_ly
 
-tmpclef = CLEFS[randint(0, 3)]
+from syncope.lilypond import run_ly
 
 
 def make_tmpfile(clef):
@@ -25,8 +23,5 @@ def make_tmpfile(clef):
     with open('syncope/cache/tmp.ly', 'w') as outfile:
         outfile.write(filestr)
         outfile.close()
-
-
-make_tmpfile(clef=tmpclef)
 
 run_ly(filename='syncope/cache/tmp.ly')
